@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+
+int n, m;
+int arr[9] = { 0, }; // 배열 0으로 초기화
+bool visited[9] = { 0, }; // false 로 배열 초기화
+
+void dfs(int cnt) { // cnt는 1~N 까지 중 무작위로 뽑는 숫자 개수 
+	if (cnt == m) {
+		for (int i = 0; i < m; i++) {
+			cout << arr[i] << ' ';
+		}
+		cout << "\n";
+		return;
+	}
+
+	for (int i = 1; i <= n; i++) {
+		if (!visited[i]) {// visited[i]가 true일경우 즉, 방문한적이 없는 경우 
+			visited[i] = true; //원래는 false였음. 방문할거기에 true로 바꿔줌.
+			arr[cnt] = i; // 값을 넣어줌. 
+			dfs(cnt + 1); // 다음 값을 재귀함수로 출력 (cnt 증가) 
+			visited[i] = false; // 재귀함수가 return 되어 끝나면 해당 구문 실행.
+		}
+	}
+}
+
+int main() {
+	cin >> n>> m;
+
+	dfs(0);
+	return 0;
+}
