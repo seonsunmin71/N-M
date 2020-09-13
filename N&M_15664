@@ -17,7 +17,7 @@ void dfs(int num,int cnt) {
 		return;
 	}
 	
-	bool used[1001] = { 0, }; // arr배열 값을 검사하는 배열을 지역변수로 선언
+	bool used[10001] = { 0, }; // arr배열 값을 검사하는 배열을 지역변수로 선언
 	for (int j = num; j < n; j++) {
 		if (!visited[j] && !used[arr[j]]) {//인덱스와 값을 검사하는 조건문  
 			visited[j] = true;
